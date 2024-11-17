@@ -1,6 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from pysnmp.hlapi import (CommunityData, ContextData, ObjectIdentity,
-                          ObjectType, SnmpEngine, UdpTransportTarget, getCmd)
+from pysnmp.hlapi import *
 
 app = FastAPI()
 
@@ -51,3 +50,7 @@ async def get_snmp_data(oid: str, host: str, community: str = "public", port: in
     """
     value = snmp_get(host, oid, community, port)
     return {"oid": oid, "value": value}
+
+
+
+
