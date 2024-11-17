@@ -52,5 +52,3 @@ async def get_snmp_data(oid: str, host: str, community: str = "public", port: in
     return {"oid": oid, "value": value}
 
 
-
-
