@@ -1,0 +1,20 @@
+{
+    "conventionalCommits.scopes": [
+      "routes",
+      "database",
+      "models",
+      "config",
+      "api",
+      "migrations",
+      "setting.json",
+      "test",
+      ".env",
+      "alembic",
+      "venv",
+      "docker",
+      "docker-compose",
+      "readme",
+      "requirements.txt",
+      "core"
+    ]
+  }
