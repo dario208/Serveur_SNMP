@@ -1,0 +1,31 @@
+version: "4.8"
+
+services:
+  ems-db:
+    image: mongo:6.0
+    container_name: mongodb
+    ports:
+      - "27017:27017" # Port pour accéder à MongoDB
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    volumes:
+      - mongodb_data:/data/db # Stockage persistant des données MongoDB
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - "8080:8080" # Port pour accéder à Adminer
+    environment:
+      ADMINER_PLUGINS: "tables,sqlite"
+      ADMINER_DESIGN: pepa-linha-dark
+    depends_on:
+      - mongodb
+networks:
+  ems-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+    driver: local
