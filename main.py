@@ -51,4 +51,23 @@ async def get_snmp_data(oid: str, host: str, community: str = "public", port: in
     value = snmp_get(host, oid, community, port)
     return {"oid": oid, "value": value}
 
+@app.get("/api/status")
+def get_status():
+    """
+    Retourne le statut du générateur.
+    """
+    return {"status": get_snmp_data(OIDS["generator_status"])}
 
+@app.get("/api/power")
+def get_power():
+    """
+    Retourne la puissance de sortie.
+    """
+    return {"power_output": get_snmp_data(OIDS["power_output"])}
+
+@app.get("/api/battery")
+def get_battery():
+    """
+    Retourne la tension de la batterie.
+    """
+    return {"battery_voltage": get_snmp_data(OIDS["battery_voltage"])}
